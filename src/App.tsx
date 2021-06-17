@@ -10,14 +10,22 @@ function App() {
 
   const [todoList, setTodoList] = React.useState(list);
 
-  function handleCheckbox(index) {
+  type Todo = {
+    id: number;
+    text: string;
+    done: boolean;
+  };
+
+  type Index = number;
+
+  function handleCheckbox(index: Index) {
     const placeholderTodoList = [...todoList];
     placeholderTodoList[index] = toggleTodo(placeholderTodoList[index]);
 
     setTodoList(placeholderTodoList);
   }
 
-  function toggleTodo(todo) {
+  function toggleTodo(todo: Todo) {
     return {
       id: todo.id,
       text: todo.text,
