@@ -12,8 +12,17 @@ function App() {
 
   function handleCheckbox(index) {
     const placeholderTodoList = [...todoList];
-    placeholderTodoList[index].done = !placeholderTodoList[index].done;
+    placeholderTodoList[index] = toggleTodo(placeholderTodoList[index]);
+
     setTodoList(placeholderTodoList);
+  }
+
+  function toggleTodo(todo) {
+    return {
+      id: todo.id,
+      text: todo.text,
+      done: !todo.done,
+    };
   }
 
   return (
