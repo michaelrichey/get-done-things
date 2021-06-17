@@ -10,11 +10,11 @@ function App() {
 
   const [todoList, setTodoList] = React.useState(list);
 
-  type Todo = {
-    readonly id: number;
-    readonly text: string;
-    readonly done: boolean;
-  };
+  type Todo = Readonly<{
+    id: number;
+    text: string;
+    done: boolean;
+  }>;
 
   type Index = number;
 
