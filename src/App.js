@@ -2,18 +2,18 @@ import "./App.css";
 import React from "react";
 
 function App() {
-  const todoList = [
+  const list = [
     { id: 1, text: "Define character relationships", done: false },
     { id: 2, text: "Define character goals", done: false },
     { id: 3, text: "Map plot", done: false },
   ];
 
-  React.useEffect(() => {});
+  const [todoList, setTodoList] = React.useState(list);
 
   function handleCheckbox(index) {
-    todoList[index].done = !todoList[index].done;
-    console.log("fire");
-    console.log(todoList);
+    const placeholderTodoList = [...todoList];
+    placeholderTodoList[index].done = !placeholderTodoList[index].done;
+    setTodoList(placeholderTodoList);
   }
 
   return (
