@@ -11,9 +11,9 @@ function App() {
   const [todoList, setTodoList] = React.useState(list);
 
   type Todo = {
-    id: number;
-    text: string;
-    done: boolean;
+    readonly id: number;
+    readonly text: string;
+    readonly done: boolean;
   };
 
   type Index = number;
@@ -25,7 +25,7 @@ function App() {
     setTodoList(placeholderTodoList);
   }
 
-  function toggleTodo(todo: Todo) {
+  function toggleTodo(todo: Todo): Todo {
     return {
       id: todo.id,
       text: todo.text,
