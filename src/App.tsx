@@ -16,13 +16,19 @@ function App() {
     done: boolean;
   }>;
 
+  type CompletedTodo = Todo & { readonly done: true };
+
   type Index = number;
 
   function handleCheckbox(index: Index) {
     const placeholderTodoList = [...todoList];
     placeholderTodoList[index] = toggleTodo(placeholderTodoList[index]);
-
     setTodoList(placeholderTodoList);
+  }
+
+  function handleMarkAllComplete() {
+    const placeholderTodoList = [...todoList];
+    setTodoList(completeAll(placeholderTodoList));
   }
 
   function toggleTodo(todo: Todo): Todo {
@@ -33,6 +39,13 @@ function App() {
     };
   }
 
+  function completeAll(todos: readonly Todo[]): CompletedTodo[] {
+    return todos.map((todo) => ({
+      ...todo,
+      done: true,
+    }));
+  }
+
   return (
     <div className="App">
       <h1>What would you like to get done today?</h1>
@@ -41,13 +54,20 @@ function App() {
           <React.Fragment>
             <ul>
               <li>
-                <input type="checkbox" onClick={() => handleCheckbox(index)} />
+                <input
+                  type="checkbox"
+                  checked={todo.done}
+                  onClick={() => handleCheckbox(index)}
+                />
                 {todo.text}
               </li>
             </ul>
           </React.Fragment>
         );
       })}
+      <button onClick={() => handleMarkAllComplete()}>
+        Mark All Completed
+      </button>
     </div>
   );
 }
