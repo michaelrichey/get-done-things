@@ -75,7 +75,7 @@ function App() {
                 <input
                   type="checkbox"
                   checked={todo.done}
-                  onClick={() => handleCheckbox(index)}
+                  onChange={() => handleCheckbox(index)}
                 />
                 {todo.text}
               </li>
