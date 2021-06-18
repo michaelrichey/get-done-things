@@ -7,10 +7,9 @@ function App() {
       id: 1,
       text: "Define character relationships",
       done: false,
-      place: "home",
     },
-    { id: 2, text: "Define character goals", done: false, place: "home" },
-    { id: 3, text: "Map plot", done: false, place: "home" },
+    { id: 2, text: "Define character goals", done: false },
+    { id: 3, text: "Map plot", done: false },
   ];
 
   const [todoList, setTodoList] = React.useState(list);
